@@ -1,0 +1,8 @@
+<h1>Create new prayer</h1>
+
+<% if flash[:error] %>
+    <div class="callout alert">
+        <%= flash[:error] %><br><br>
+    </div>
+<% end %>
+<%= render 'form' %>

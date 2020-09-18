@@ -1,0 +1,68 @@
+<h1>Gathering</h1>
+
+<% if flash[:notice] %>
+    <div class="callout success">
+        <%= flash[:notice] %>
+    </div>
+<% end %>
+
+<% if current_user == @gathering.host %>
+
+    <%= link_to 'Edit gathering', edit_gathering_path(@gathering), :class => "button" %> <br><br>
+
+    <%= button_to 'Delete gathering', "/gatherings/#{@gathering.id}", method: "delete", :class => "button" %><br><br>
+
+<% end %>
+
+Name:<br> <%= @gathering.name %><br><br>
+Host:<br> <%= @gathering.host.name %><br><br>
+Host email:<br> <%= link_to @gathering.host.email_address, "mailto:" + @gathering.host.email_address %><br><br>
+Phone number:<br> <%= @gathering.phone_number %><br><br>
+Meeting date/time:<br> <%= @gathering.meeting_date.in_time_zone(@gathering.timezone).strftime("%B %e, %Y %l:%M%p") %> <%= @gathering.timezone %><br><br>
+
+Address:<br> <%= @gathering.address.address_1 %><br>
+
+<% if @gathering.address.address_2 != "" %>
+    <%= @gathering.address.address_2 %><br>
+<% end %>
+<%= @gathering.address.city %>
+<%= @gathering.address.state %>
+<%= @gathering.address.zipcode %><br><br>
+
+ 
+
+<iframe   width="600" height="450"
+  frameborder="0" style="border:0; max-width: 100%;"
+    src="https://www.google.com/maps/embed/v1/place?key=<%= ENV['GOOGLE_KEY'] %>
+     &q=<%= @gathering.address.address_1 %>+<%= @gathering.address.city %>+<%= @gathering.address.zipcode %>>" allowfullscreen>
+
+</iframe>
+
+
+<h2>Attendees</h2>
+<% if !@users.empty? %>
+    <% @users.each do |user| %>
+    <%= user.name %><br>
+    <% end %>
+
+<% else %>
+    <h3>No attendees</h3>
+<% end %>
+<br>
+
+<h2>Prayers</h2>
+
+<%= link_to 'Create prayer request', new_gathering_prayer_path(@gathering), :class => "button" %><br><br>
+
+<% if @gathering.prayers.empty? %>
+    <h3>No prayers created</h3> 
+<% else %>
+    <% @gathering.prayers.each do |prayer| %>
+    <%= link_to prayer.title, gathering_prayer_path(@gathering, prayer) %><br>
+    <% end %>
+<% end %>
+
+<!-- <%= javascript_include_tag 'iframe.js' %> -->
+
+
+

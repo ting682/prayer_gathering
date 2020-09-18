@@ -1,0 +1,7 @@
+document.addEventListener('DOMContentLoaded', (event) => {
+    var ga = document.createElement("script"); //ga is to remember Google Analytics ;-)
+    ga.type = 'text/javascript';
+    ga.src = 'https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials[:google_key] %>&callback=initAutocomplete&libraries=places';
+    ga.id = 'invisible';
+    document.body.appendChild(ga);
+    ga.remove()});

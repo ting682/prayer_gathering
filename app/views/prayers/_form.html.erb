@@ -1,0 +1,10 @@
+<%= form_for @prayer do |f| %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %><br>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %><br>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= gathering_id_field(@prayer) %><br><br>
+
+<%= f.submit :class => "button" %>
+<% end %>

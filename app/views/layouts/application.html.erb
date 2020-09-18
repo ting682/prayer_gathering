@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PrayerGathering</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'foundation' %>
+    <%= stylesheet_link_tag 'main' %>
+    
+    <% #javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    
+  </head>
+
+  <body >
+  
+    <div class="header">
+      <div class="header-left">
+        <%= link_to 'Home', root_path %>
+        <% if logged_in? %>
+          <%= link_to 'Gatherings', gatherings_path %>
+          <%= link_to 'Prayers', prayers_path %>
+        
+        <% end %>
+        <% if !logged_in? %>
+          <%= link_to 'Sign Up', signup_path %>
+          <%= link_to 'Log in', login_path %>
+          
+        <% end %>
+        
+        <% if logged_in? %>
+          <%= link_to 'Logout', logout_path %>
+        <% end %>
+      </div>
+      <div class="topnav">
+        <div id="myLinks">
+            <% if logged_in? %>
+              <%= link_to 'Gatherings', gatherings_path %>
+              <%= link_to 'Prayers', prayers_path %>
+            
+            <% end %>
+            <% if !logged_in? %>
+              <%= link_to 'Sign Up', signup_path %>
+              <%= link_to 'Log in', login_path %>
+              
+            <% end %>
+            
+            <% if logged_in? %>
+              <%= link_to 'Logout', logout_path %>
+            <% end %>
+        </div>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+        </a>
+      </div>
+  </a>
+    </div>
+    <div class="wrapper">
+    <%= yield %>
+    </div>
+  
+    <footer>
+      <span>Photo by <a href="https://unsplash.com/@rosiefraser?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Rosie Fraser</a> on <a href="https://unsplash.com/s/photos/prayer-gathering?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+    </footer>
+
+  <script>
+    function myFunction() {
+    var x = document.getElementById("myLinks");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
+  </script>
+  </body>
+
+</html>

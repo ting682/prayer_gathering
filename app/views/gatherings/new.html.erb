@@ -1,0 +1,27 @@
+<h1>Create gathering</h1>
+
+<% if flash[:gatheringerror] %>
+  <div class="callout alert">
+    <%= flash[:gatheringerror] %><br><br>
+  </div>
+<% end %>
+
+
+
+<%= render 'form' %>
+
+ 
+
+
+
+
+
+ 
+
+<script>
+  </script>
+
+<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+<%= javascript_include_tag 'googleplaces.js' %>
+<%= javascript_include_tag 'googleautocomplete.js' %>
+<%= javascript_include_tag 'phonenumber.js' %>

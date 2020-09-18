@@ -1,0 +1,18 @@
+<h1>Login</h1>
+
+<% if flash[:error] %>
+    <div class="callout alert">
+        <%= flash[:error] %><br><br>
+    </div>
+<% end %>
+
+<%=  form_for :user do |f| %>
+
+    <%= f.label :email_address %><br>
+    <%= f.text_field :email_address %><br>
+    <%= f.label :password %><br>
+    <%= f.text_field :password, type: "password" %><br><br>
+    <%= f.submit "Login", :class => "button" %><br>
+<% end %>
+
+<%= link_to('Log in with Facebook!', '/auth/facebook') %>

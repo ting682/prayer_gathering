@@ -1,0 +1,24 @@
+<div class="wrapper">
+<h1>Sign up!</h1>
+
+<% if flash[:error] %>
+    <div class="callout alert">
+        <%= flash[:error] %>
+    </div>
+<% end %>
+<%= simple_form_for :user do |f| %>
+<%= f.label :name %><br>
+<%= f.text_field :name %><br>
+<%= f.label :email_address %><br>
+<%= f.text_field :email_address %><br>
+
+<%= f.label :password %><br>
+<%= f.text_field :password, type: "password" %><br>
+<%= f.label :password_confirmation %><br>
+<%= f.text_field :password_confirmation, type: "password"  %><br>
+<%= f.label :host, "Check for host" %><br>
+<%= f.check_box :host %><br>
+<%= f.submit "Sign up!", :class => "button" %>
+<% end %>
+
+</div>

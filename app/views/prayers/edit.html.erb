@@ -1,0 +1,17 @@
+<h1>Edit prayer</h1>
+
+<% if flash[:error] %>
+
+    <div class="callout alert">
+        <%= flash[:error] %><br><br>
+    </div>
+
+<% end %>
+
+Gathering at:<br>
+<%= @prayer.gathering.name %><br><br>
+Meeting date/time:<br>
+<%= @prayer.gathering.meeting_date.in_time_zone(@prayer.gathering.timezone).strftime("%B %e, %Y %l:%M%p") %> <%= @prayer.gathering.timezone %><br><br>
+
+
+<%= render 'form' %>

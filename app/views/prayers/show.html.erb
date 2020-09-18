@@ -1,0 +1,21 @@
+<h1>Prayer</h1>
+
+<% if flash[:notice] %>
+    <div class="callout success">
+        <%= flash[:notice] %><br><br>
+    </div>
+<% end %>
+
+<%= link_to 'Edit prayer', edit_prayer_path(@prayer), :class => "button" %><br><br>
+
+<%= button_to 'Delete prayer', "/prayers/#{@prayer.id}", method: "delete", :class => "button" %><br>
+
+
+<h2>Title</h2>
+<%= @prayer.title %><br><br>
+<h2>Content</h2>
+<%= @prayer.content %><br><br>
+
+<h2>Gathering</h2>
+
+<%= link_to @prayer.gathering.meeting_date.in_time_zone(@prayer.gathering.timezone).strftime("%B %e, %Y %l:%M%p") + " " + @prayer.gathering.timezone  + " meeting at " + @prayer.gathering.name, gathering_path(@prayer.gathering) %><br><br>

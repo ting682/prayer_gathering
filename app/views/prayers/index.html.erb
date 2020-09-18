@@ -1,0 +1,29 @@
+<h1>Prayers</h1>
+
+<% if flash[:notice] %>
+    <div class="callout success">
+        <%= flash[:notice] %><br><br>
+    </div>
+<% end %>
+
+
+<h3><%= "Welcome, #{current_user.name}!" %></h3>
+
+<%= link_to "Create prayer", new_prayer_path, :class => "button" %><br><br>
+
+
+<% if @prayers != [] %>
+
+    <% @prayers.each do |prayer| %>
+
+    
+    <%= link_to prayer.title, prayer_path(prayer) %><br><br>
+
+    <% end %>
+
+<% else %>
+
+    <h2>You have not created any prayers<h2>
+
+<% end %>
+

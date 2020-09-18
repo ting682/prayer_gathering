@@ -1,0 +1,54 @@
+<h1>Active prayer gatherings</h1>
+
+<% if @gatherings != [] %>
+    <div class="divTable">
+        <div class="divTableBody">
+            <div class="divTableRow">
+                    <div class="divTableHead">Gathering name</div>
+                    <div class="divTableHead">Meeting date</div>
+                    <div class="divTableHead">Meeting time</div>
+                    <div class="divTableHead">Time zone</div>
+                    <div class="divTableHead">Show page</div>
+                    <div class="divTableHead">Are you the host?</div>
+            </div>
+                <% @gatherings.each do |gathering| %>
+                    <div class="divTableRow">   
+                        <% if gathering.meeting_date != nil %>
+                            
+                            <div class="divTableCell">
+                                <%= gathering.name %>
+                            </div>
+                            <div class="divTableCell">
+                                <%= gathering.meeting_date.in_time_zone(gathering.timezone).strftime("%B %e, %Y") %>
+                            </div>
+                            <div class="divTableCell">
+                                <%= gathering.meeting_date.in_time_zone(gathering.timezone).strftime("%l:%M%p") %>
+                            </div>
+                            <div class="divTableCell">
+                                <%= gathering.timezone %>
+                            </div>
+                            <div class="divTableCell">
+                                <%= link_to 'More info', gathering_path(gathering) %>
+                                
+                            </div>
+                            <div class="divTableCell">
+                                <% if gathering.host_id == current_user.id %>
+                                    Yes
+                                <% else %>
+                                    No
+                                <% end %>
+                            </div>
+
+                        <% else %>
+                            
+                        <% end %>
+                    </div>
+                <% end %>
+            
+        </div>
+    </div>
+<% else %>
+
+    <h2>No active gatherings<h2>
+
+<% end %>

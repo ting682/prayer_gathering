@@ -1,0 +1,38 @@
+<%= form_for @gathering do |f| %>
+<%= f.label :name %><br>
+<%= f.text_field :name %><br><br>
+<%= f.label :meeting_date %><br>
+<%= f.datetime_select :meeting_date, default: Time.now.localtime, ampm: true %><br><br>
+<%= f.label :timezone %><br>
+<%= f.time_zone_select :timezone, ActiveSupport::TimeZone.us_zones %><br><br>
+<%= f.label :phone_number %><br>
+<%= f.text_field :phone_number %><br><br>
+<%= f.hidden_field :host_id, :value => @host.id %>
+<%= f.label :url, "URL" %><br>
+<%= f.text_field :url %><br><br>
+<%= f.fields_for :address, @address do |a| %>
+
+    <%= a.label :address_1 %><br>
+    <%= a.text_field :address_1 %><br><br>
+    <%= a.label :address_2 %><br>
+    <%= a.text_field :address_2 %><br><br>
+    <%= a.label :city %><br>
+    <%= a.text_field :city %><br><br>
+    <%= a.label :state %><br>
+    <%= a.select :state, options_for_select(us_states) %><br><br>
+    <%= a.label :zipcode %><br>
+    <%= a.text_field :zipcode %><br><br>
+    
+<% end %>
+
+    <div id="locationField">
+      <input
+        id="autocomplete"
+        placeholder="Search your address"
+        onFocus="geolocate()"
+        type="text"
+      />
+    </div>
+
+    <%= f.submit :class => "button" %><br><br>
+<% end %>
