@@ -4,6 +4,6 @@ This is a Ruby on Rails app that is intended for a user to host a prayer gatheri
 
 A youtube video walkthrough can be found below.
 
-[![small group](http://img.youtube.com/vi/6oR-F2Y6AvA/0.jpg)](http://www.youtube.com/watch?v=6oR-F2Y6AvA)
+[![prayer gathering](http://img.youtube.com/vi/6oR-F2Y6AvA/0.jpg)](http://www.youtube.com/watch?v=6oR-F2Y6AvA)
 
 If there are comments or questions, please email me at [email](mailto:tchung682@gmail.com)
