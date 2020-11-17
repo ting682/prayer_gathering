@@ -1,24 +1,3 @@
-# README
+# Prayer gathering
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This is a Ruby on Rails app that is intended for a user to host a prayer gathering. This app includes validations for time and prayers to be submitted for the prayer gathering. The models use a many to many relationship for prayers and gatherings. Each gathering contains a meetup time that is validated with time zones and contains form fields for addresses which are stored in the postgreSQL database. A demo of this app can be found [here](https://prayergathering.herokuapp.com/). If there are comments or questions, please email me at [my email](mailto:tchung682@gmail.com?subject=[Prayer gathering app])
